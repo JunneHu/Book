@@ -1,0 +1,34 @@
+.footer-bg{
+    display: flex;
+    position: fixed;
+    bottom:0;
+    left:0;
+    width:7.5rem;
+    height: 1rem;
+    box-shadow:0 .1rem .3rem #888;
+    text-align: center;
+    ul{
+        display: flex;
+        width:7.5rem;
+        height: 1rem;
+        align-items: center;
+        li{
+            flex: 1;
+            color: #999;
+            font-size: .24rem;
+            .am-icon{
+                width:.4rem;
+                height:.3rem;
+                display: block;
+                color: #333;
+                margin: 0 auto .1rem;
+            }
+            &.active{
+                color: #EC414D;
+                .am-icon{
+                    color: #EC414D;
+                }
+            }
+        }
+    }
+}

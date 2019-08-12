@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html class="borderbox" style="font-size: 50px;">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <!-- 使用高清方案生成 -->
+  <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1">
+  <meta name="renderer" content="webkit">
+  <meta name="description" content="<%= htmlWebpackPlugin.options.description %>">
+  <meta name="keywords" content="<%= htmlWebpackPlugin.options.keywords %>">
+  <title></title>
+  <style>
+    html {
+      font-size: 50px;
+    }
+
+    @media screen and (min-width:320px) {
+      html {
+        font-size: 42.66px
+      }
+    }
+
+    @media screen and (min-width:360px) {
+      html {
+        font-size: 48px
+      }
+    }
+
+    @media screen and (min-width:375px) {
+      html {
+        font-size: 50px
+      }
+    }
+
+    @media screen and (min-width:400px) {
+      html {
+        font-size: 53.33px
+      }
+    }
+
+    @media screen and (min-width:414px) {
+      html {
+        font-size: 55.2px
+      }
+    }
+
+    @media screen and (min-width:440px) {
+      html {
+        font-size: 58.66px
+      }
+    }
+
+    @media screen and (min-width:480px) {
+      html {
+        font-size: 64px
+      }
+    }
+
+    @media screen and (min-width:520px) {
+      html {
+        font-size: 69.33px
+      }
+    }
+
+    @media screen and (min-width:560px) {
+      html {
+        font-size: 74.66px
+      }
+    }
+
+    @media screen and (min-width:600px) {
+      html {
+        font-size: 80px
+      }
+    }
+
+    html,
+    body,
+    div,
+    p,
+    h1,
+    h2,
+    h3,
+    span,
+    button,
+    input,
+    img,
+    ul,
+    li,
+    table,
+    th,
+    tr,
+    td,
+    a {
+      margin: 0;
+      padding: 0;
+      font-size: .24rem;
+    }
+
+    html,
+    body,
+    #app {
+      min-height: 100%;
+    }
+
+    html>body {
+      background: #fff;
+    }
+
+    #app {
+      position: relative;
+    }
+
+    input,
+    button,
+    select,
+    textarea {
+      outline: none;
+      -webkit-appearance: none;
+      border-radius: 0;
+    }
+
+    li {
+      list-style: none;
+    }
+
+    a {
+      text-decoration: none;
+    }
+
+    button,
+    input {
+      border: none;
+      outline: none;
+      background: none;
+    }
+
+    * {
+      padding: 0;
+      margin: 0;
+      box-sizing: border-box;
+    }
+
+    .clearfix:after {
+      content: " ";
+      display: block;
+      font-size: 0;
+      height: 0;
+      clear: both;
+      visibility: hidden;
+    }
+  </style>
+  <script type="text/javascript">
+
+    // 判断是否为 IE 浏览器
+    var browser = navigator.appName;
+    // 判断 IE 浏览器的版本号
+    var b_version = navigator.appVersion,
+      version = b_version.split(';'),
+      trimVersion = version[1].replace(/[ ]/g, ''),
+      trimVersionTrans = trimVersion.substr(4);
+    // 如果访问的浏览器是 IE 浏览器，且版本号小于 9，
+    // 则跳转到 /upgrade/index.html
+    if (browser == 'Microsoft Internet Explorer' && trimVersionTrans < 9) {
+      window.location.href = '/upgrade/';
+    }
+
+    // rem动态计算
+    (function (doc, win) {
+      var docEl = doc.documentElement,
+        resizeEvt = 'orientationchange' in window ? 'orientationchange' : 'resize',
+        recalc = function () {
+          var clientWidth = docEl.clientWidth;
+          if (!clientWidth) return;
+          docEl.style.fontSize = 100 * (clientWidth / 750) + 'px';
+        };
+
+      if (!doc.addEventListener) return;
+      win.addEventListener(resizeEvt, recalc, false);
+      doc.addEventListener('DOMContentLoaded', recalc, false);
+    })(document, window);
+
+    // 引入 Promise 的 fallback 支持 (部分安卓手机不支持 Promise)
+    if (!window.Promise) {
+      document.writeln('<script src="https://as.alipayobjects.com/g/component/es6-promise/3.2.2/es6-promise.min.js"' + '>' + '<' + '/' + 'script>');
+    }
+  </script>
+
+  <script type="text/javascript">
+    var js = "<script src=\"/resources/js/configs.js?time=" + Math.random() + "\" ><\/script>"
+    document.write(js);
+  </script>
+  <script type="text/javascript">
+    var jq = "<script src=\"/resources/js/jquery.js?time=" + Math.random() + "\" ><\/script>"
+    document.write(jq);
+  </script>
+  <script src="<%= htmlWebpackPlugin.options.bundle %>"></script>
+  <script>
+    // 获取初始设备高度
+    var clientHeight = document.documentElement.clientHeight || document.body.clientHeight;
+    window.deviceHeight = clientHeight;
+  </script>
+</head>
+
+<body>
+  <div id="app"></div>
+</body>
+
+</html>
