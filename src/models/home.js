@@ -38,6 +38,12 @@ export default {
         ...state,
         ...payload,
       };
+    },
+    toMid(state, { payload }) {
+      return {
+        ...state,
+        ...payload,
+      };
     }
   },
 };

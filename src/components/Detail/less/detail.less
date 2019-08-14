@@ -1,6 +1,60 @@
-.main-page{
-    padding:1rem 0;
-}
-.book-bg{
 
+.detail-bg{
+    position: relative;
+    .main-page{
+        padding:1rem .3rem;
+        min-height: calc(~"100vh");
+    }
+    .b-top{
+        display: flex;
+        height: 2.3rem;
+        padding-top: .3rem;
+        .left{
+            width:1.7rem;
+            position: relative;
+            img{
+                width:100%;
+                height: 100%;
+                border-radius: .04rem;
+            }
+        }
+        .right{
+            width: 5.2rem;
+            padding: .3rem 0 0 .3rem;
+            .title{
+                font-size: .38rem;
+                margin-bottom: .3rem;
+                color:#333;
+            }
+            .name{
+                font-size: .28rem;
+                color: #999;
+            }
+        }
+    }
+    .b-center{
+        padding: .5rem 0;
+        .h3{
+            font-size: .32rem;
+            margin-bottom: .2rem;
+            color:#333;
+        }
+        article{
+            color:#999;
+            font-size: .28rem;
+            line-height: .45rem;
+        }
+    }
+    .b-bottom{
+        position: fixed;
+        left: 0;
+        bottom:0;
+        width:7.5rem;
+        display: flex;
+        .btn{
+            flex: 1;
+            border-radius: 0;
+            font-size: .32rem;
+        }
+    }
 }

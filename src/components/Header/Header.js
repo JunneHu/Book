@@ -12,7 +12,12 @@ class Header extends React.Component {
             pathname: props.location.pathname
         }
     }
-
+    showModal=()=>{
+        this.props.dispatch({
+            type: 'home/toMid',
+            payload: { toModalMid: Math.random() }
+        })
+    }
     render() {
         const { pathname } = this.state;
         const { title } = this.props;
@@ -23,7 +28,7 @@ class Header extends React.Component {
                 }
                 </div>
                 <div className="center">{title}</div>
-                <div className="right"><Icon type="ellipsis" /></div>
+                <div className="right" onClick={this.showModal}><Icon type="ellipsis" /></div>
             </div>
         )
     }

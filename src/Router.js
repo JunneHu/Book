@@ -34,6 +34,10 @@ const RouterWrapper = ({ history, app }) => {
     app,
     component: () => import('./components/Detail'),
   });
+  const Chapter = dynamic({
+    app,
+    component: () => import('./components/Chapter'),
+  });
   const LoginModal = dynamic({
     app,
     component: () => import('./components/LoginModal'),
@@ -67,6 +71,7 @@ const RouterWrapper = ({ history, app }) => {
         <Route exact path="/login" component={LoginModal} />
         <Route exact path="/book" component={Book} />
         <Route exact path="/detail" component={Detail} />
+        <Route exact path="/chapter" component={Chapter} />
         {/* 403 */}
         <Route exact path="/403" component={PageForbidden} />
         {/* 500 */}

@@ -13,32 +13,51 @@ class Detail extends React.Component {
 		super(props);
 		const url = parse(props.location.search, true);
 		const { bid } = url.query;
+		const userInfo = localStorage.getItem('userInfo') ? JSON.parse(localStorage.getItem('userInfo')) : {}
 		this.state = {
 			bid,
-			detail: {}
+			detail: {},
+			userInfo
 		}
 	}
 	componentWillMount() {
 		scrollTo(0, 0);
-
+		const { bid } = this.state;
+		this.init(bid);
 	}
 	componentWillReceiveProps(nextProps) {
 		const { props } = this;
-		const { detail: { getGoodsLis } } = nextProps;
-		if (sendOrder !== props.detail.sendOrder) {
-			const { code, data } = sendOrder;
+		const { book: { getBookInfo } } = nextProps;
+		if (getBookInfo !== props.book.getBookInfo) {
+			const { code, data } = getBookInfo;
 			if (code === '0') {
-				// 成功跳转
+				this.setState({
+					detail: data
+				})
 			} else {
-				Toast.info(sendOrder.message);
+				Toast.info(getBookInfo.message);
 			}
 		}
 	}
-	init = (parentId) => {
+	init = (bid) => {
 		this.props.dispatch({
-			type: 'book/book',
+			type: 'book/getBookInfo',
 			payload: {
-				parentId
+				id: bid
+			}
+		})
+	}
+	toRead = () => {
+		const { detail } = this.state;
+		this.props.history.push(`/chapter?cid=${detail.id}`)
+	}
+	toAdd = () => {
+		const { detail, userInfo } = this.state;
+		this.props.dispatch({
+			type: 'book/userBook',
+			payload: {
+				bookId: detail.id,
+				mobileNo: userInfo.mobileNo
 			}
 		})
 	}
@@ -46,7 +65,7 @@ class Detail extends React.Component {
 		const { detail } = this.state;
 		const { props } = this;
 		return (
-			<div className="book-bg">
+			<div className="detail-bg">
 				<Header {...props} title="详情" />
 				<div className="main-page">
 					<div className="b-top">
@@ -57,20 +76,19 @@ class Detail extends React.Component {
 							</div> : ''}
 						</div>
 						<div className="right">
-							<div className="name">{detail.name}</div>
+							<div className="title">{detail.title}</div>
+							<div className="name">{detail.author}</div>
 						</div>
 					</div>
 					<div className="b-center">
 						<div className="h3">简介</div>
 						<article>
-							{
-								detail.content
-							}
+							{detail.content}
 						</article>
 					</div>
 					<div className="b-bottom">
-						<button className="btn">加入书单</button>
-						<button className="btn">阅读</button>
+						<button className="btn gost" onClick={this.toAdd}>加入书单</button>
+						<button className="btn theme" onClick={this.toRead}>阅读</button>
 					</div>
 				</div>
 			</div>

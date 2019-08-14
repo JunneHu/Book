@@ -12,15 +12,43 @@ class Home extends React.Component {
         super(props);
         const userInfo = localStorage.getItem('userInfo') ? JSON.parse(localStorage.getItem('userInfo')) : {}
         this.state = {
-            userInfo
+            userInfo,
+            bookList: []
         }
+    }
+    componentWillMount() {
+        const { userInfo } = this.state;
+        if (userInfo.token) {
+            this.init()
+        }
+    }
+    componentWillReceiveProps(nextProps) {
+        const { props } = this;
+        const { book: { userBookList } } = nextProps;
+        if (userBookList !== props.book.userBookList) {
+            const { code, data } = userBookList;
+            if (code === '0') {
+                this.setState({
+                    bookList: data.list 
+                })
+            }
+        }
+    }
+    init = () => {
+        const { userInfo } = this.state;
+        this.props.dispatch({
+            type: 'book/userBookList',
+            payload: {
+                mobileNo: userInfo.mobileNo
+            }
+        })
     }
     toLogin = () => {
         this.props.history.push(`/login?uri=${encodeURI(window.location.href)}`)
     }
     render() {
         const { props } = this;
-        const { userInfo } = this.state;
+        const { userInfo, bookList } = this.state;
         return (
             <div>
                 <Header {...props} title="首页" />
@@ -28,26 +56,15 @@ class Home extends React.Component {
                     {
                         userInfo && userInfo.token ?
                             <ul className="my-book">
-                                <li>
-                                    <img src="" className="book-img" />
-                                    <div className="name">这里是标题这里是标题这里是标题这里是标题这里是标题这里是标题这里是标题</div>
-                                </li>
-                                <li>
-                                    <img src="" className="book-img" />
-                                    <div className="name">这里是标题这里是标题这里是标题这里是标题这里是标题这里是标题这里是标题</div>
-                                </li>
-                                <li>
-                                    <img src="" className="book-img" />
-                                    <div className="name">这里是标题这里是标题这里是标题这里是标题这里是标题这里是标题这里是标题</div>
-                                </li>
-                                <li>
-                                    <img src="" className="book-img" />
-                                    <div className="name">这里是标题这里是标题这里</div>
-                                </li>
-                                <li>
-                                    <img src="" className="book-img" />
-                                    <div className="name">这里是标题这里是标题这里</div>
-                                </li>
+                                {
+                                    bookList.length ? bookList.map((v, i) => (
+                                        <li key={i}>
+                                            <img src={v.img} className="book-img" />
+                                            <div className="name">{v.title}</div>
+                                        </li>
+                                    ))
+                                    :''
+                                }
                             </ul>
                             :
                             <div className="login-info">

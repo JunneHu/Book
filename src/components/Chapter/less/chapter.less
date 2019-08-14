@@ -1,0 +1,45 @@
+
+.chapter-bg{
+    padding: .3rem;
+    line-height: .5rem;
+    color: #666;
+    .main-page{
+        padding:1rem 0; 
+        min-height: calc(~"100vh");
+        overflow-y: auto;
+    }
+    .c-title{
+        font-size: .32rem;
+        color: #333;
+        margin-bottom: .2rem;
+    }
+    .c-con{
+        margin-bottom: .2rem;
+        p{
+            font-size: .28rem; 
+        }
+    }
+    .c-menu{
+        width: 7.5rem;
+        height: calc(~"100vh - 1rem");
+        background: rgba(0,0,0,.5);
+        position: fixed;
+        top:1rem;
+        left: 0;
+        display: flex;
+        .left{
+            flex: 3;
+        }
+        .right{
+            flex: 2;
+            background: #fff;
+            padding: .5rem 0;
+            li{
+                line-height: .7rem;
+                padding: 0 .5rem;
+                font-size: .28rem;
+                color: #ec414d;
+            }
+        }
+    }
+}

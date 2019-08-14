@@ -56,29 +56,27 @@ class Book extends React.Component {
             <div className="book-bg">
                 <Header {...props} title="结果" />
                 <div className="main-page">
-                    <div className="book-bg">
-                        <ul>
-                            {
-                                bookList && bookList[0] ? bookList.map((v, i) => (
-                                    <li key={i} onClick={() => { this.toDetail(v.id) }}>
-                                        <div className="left">
-                                            <img src={v.img} />
-                                            {v.tips ? <div className="sale-tips">
-                                                {v.tips}
-                                            </div> : ''}
+                    <ul>
+                        {
+                            bookList && bookList[0] ? bookList.map((v, i) => (
+                                <li key={i} onClick={() => { this.toDetail(v.id) }}>
+                                    <div className="left">
+                                        <img src={v.img} />
+                                        {v.tips ? <div className="sale-tips">
+                                            {v.tips}
+                                        </div> : ''}
+                                    </div>
+                                    <div className="center">
+                                        <div className="name">{v.title}</div>
+                                        <div className="price">
+                                            <span className="del-price">{v.author}</span>
                                         </div>
-                                        <div className="center">
-                                            <div className="name">{v.title}</div>
-                                            <div className="price">
-                                                <span className="del-price">{v.author}</span>
-                                            </div>
-                                        </div>
-                                        <Button className="right">阅读</Button>
-                                    </li>
-                                )) : ''
-                            }
-                        </ul>
-                    </div>
+                                    </div>
+                                    <Button className="right">阅读</Button>
+                                </li>
+                            )) : ''
+                        }
+                    </ul>
                 </div>
             </div>
         )
