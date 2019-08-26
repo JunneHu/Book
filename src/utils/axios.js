@@ -6,6 +6,7 @@ import { debug } from 'util';
 // axios.defaults.baseURL = '';  API 域。默认值：当前域
 axios.defaults.withCredentials = true;  // 允许跨域且携带 Cookie（或自定义头）。默认值：false
 axios.defaults.timeout = 30000; // 设置请求超时时间（ms）不超过半分钟
+axios.defaults.headers.common['Authorization'] = 'Bearer ' + localStorage.getItem('token');;  // 携带的自定义头
 axios.defaults.headers.post['Content-Type'] = 'application/json';  // 设置请求提内容类型，其他可选值：application/x-www-form-urlencoded
 
 axios.interceptors.request.use(config => {
@@ -44,7 +45,7 @@ axios.interceptors.response.use(response => {
         // 401（Unauthorized）：未身份验证或身份失效；跳转到登录页
         // 504（Gateway Timeout）：响应超时，跳转到登录页
         // TODO：在此处移除本地登录信息
-        return;//window.location.href = '/account/signin';
+        return window.location.href = '/login';
         break;
       case 403:
         // 403（Forbidden）：已授权或不需要授权，但禁止访问；跳转到 403 页

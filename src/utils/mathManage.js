@@ -65,6 +65,18 @@ export default {
     arr[index1] = arr.splice(index2, 1, arr[index1])[0];
     return arr;
   },
+  getTime(time) {
+    if (time) {
+      if (time < 60) {
+        time = `00:${time < 10 ? `0${time}` : time}`
+      } else {
+        time = `${parseInt(time / 60) < 10 ? `0${parseInt(time / 60)}` : parseInt(time / 60)}:${time % 60 < 10 ? `0${time % 60}` : time % 60}`
+      }
+      return time;
+    } else {
+      return `00:00`
+    }
+  },
   latestTime(v, nowServerTime, that) {
     // 倒计时
     function leftTimer(enddate) {

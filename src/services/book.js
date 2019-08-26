@@ -10,7 +10,7 @@ export function getBookInfo(params) {
 }
 
 export function getChapterByBookId(params) {
-    return axios.get(configs.baseUrl + Api.chapter + '/' + params.cid);
+    return axios.get(configs.baseUrl + Api.chapter + '?bookId=' + params.cid);
 }
 
 

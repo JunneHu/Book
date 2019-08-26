@@ -12,24 +12,6 @@ export default {
           banner: result,
         },
       });
-    },
-    *category1({ payload }, { call, put }) {
-      const result = yield call(home.category1, payload);
-      yield put({
-        type: 'success',
-        payload: {
-          category1: result,
-        },
-      });
-    },
-    *category2({ payload }, { call, put }) {
-      const result = yield call(home.category2, payload);
-      yield put({
-        type: 'success',
-        payload: {
-          category2: result,
-        },
-      });
     }
   },
   reducers: {

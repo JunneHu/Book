@@ -24,7 +24,7 @@ class Header extends React.Component {
         return (
             <div className="header-bg">
                 <div className="left" onClick={()=>{this.props.history.goBack()}}>{
-                    (pathname !== '/' && pathname !== '/search' && pathname !== '/list' && pathname !== '/my') ? <Icon type="left" /> : ''
+                    (pathname !== '/' && pathname !== '/search' && pathname !== '/my') ? <Icon type="left" /> : ''
                 }
                 </div>
                 <div className="center">{title}</div>

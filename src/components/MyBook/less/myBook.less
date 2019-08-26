@@ -1,0 +1,57 @@
+ .main-page{
+    padding:1rem 0;
+    .login-info{
+        width:7.5rem;
+        min-height: calc(~"100vh - 2rem");
+        display: flex;
+        justify-content:center;
+        align-items: center;
+        .btn{
+            width:2rem;
+            font-size: .28rem;
+            height: .8rem;
+            line-height: .8rem;
+            margin-bottom: .2rem;
+        }
+        .box{
+            text-align: center;
+            color: #999;
+        }
+    }
+    .my-book{
+        padding: .24rem;
+        height: calc(~"100vh - 2rem");
+        overflow-x: hidden;
+        overflow-y: auto;
+        li{
+            display: inline-block;
+            width:1.57rem;
+            height: 2.5rem;
+            overflow: hidden;
+            margin-bottom: .24rem;
+            margin-right: .24rem;
+            border-radius: .05rem;
+            &:nth-child(4n){
+                margin-right: 0;
+            }
+            .book-img{
+                width:1.57rem;
+                height: 1.9rem;
+                background: #ccc;
+            }
+            .name{
+                width: 100%;
+                height: .6rem;
+                line-height: .3rem;
+                text-overflow: -o-ellipsis-lastline;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                display: -webkit-box;
+                -webkit-line-clamp: 2;
+                line-clamp: 2;
+                -webkit-box-orient: vertical;
+                color: #666;
+            }
+        }
+    }
+ }

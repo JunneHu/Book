@@ -27,6 +27,7 @@ class LoginModal extends React.Component {
       if (code === '0') {
         Toast.success('登录成功！');
         localStorage.setItem('userInfo', JSON.stringify(data));
+        localStorage.setItem('token',data.token);
         window.location.href = this.state.uri ? decodeURI(this.state.uri) : '/my';
       } else {
         Toast.fail(message);

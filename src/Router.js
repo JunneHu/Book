@@ -61,6 +61,18 @@ const RouterWrapper = ({ history, app }) => {
     app,
     component: () => import('./components/PageNotFound'),
   });
+  const MyBook = dynamic({
+    app,
+    component: () => import('./components/MyBook'),
+  });
+  const ShopList = dynamic({
+    app,
+    component: () => import('./components/ShopList'),
+  });
+  const MusicInfo = dynamic({
+    app,
+    component: () => import('./components/MusicInfo'),
+  });
   return (
     <ConnectedRouter history={history}>
       <Switch>
@@ -72,6 +84,9 @@ const RouterWrapper = ({ history, app }) => {
         <Route exact path="/book" component={Book} />
         <Route exact path="/detail" component={Detail} />
         <Route exact path="/chapter" component={Chapter} />
+        <Route exact path="/mybook" component={MyBook} />
+        <Route exact path="/shop" component={ShopList} />
+        <Route exact path="/musicInfo" component={MusicInfo} />
         {/* 403 */}
         <Route exact path="/403" component={PageForbidden} />
         {/* 500 */}

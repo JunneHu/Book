@@ -11,13 +11,13 @@ class Book extends React.Component {
     constructor(props) {
         super(props);
         const url = parse(props.location.search, true);
-        const { cid } = url.query;
+        const { id } = url.query;
         this.state = {
             bookList: [],
             postData: {
                 pageIndex: 1,
                 pageSize: 10,
-                parentId: cid
+                parentId: id
             }
         }
     }

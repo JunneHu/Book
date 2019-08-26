@@ -20,8 +20,8 @@ class Footer extends React.Component {
         return (
             <div className="footer-bg">
                 <ul>
-                    <li className={pathname === '/' ? "active" : ""} onClick={() => { this.toUrl('/') }}><Icon type="ellipsis" />书架</li>
-                    <li className={pathname === '/list' ? "active" : ""} onClick={() => { this.toUrl('/list') }}><Icon type="ellipsis" />书城</li>
+                    <li className={pathname === '/' ? "active" : ""} onClick={() => { this.toUrl('/') }}><Icon type="ellipsis" />首页</li>
+                    {/* <li className={pathname === '/list' ? "active" : ""} onClick={() => { this.toUrl('/list') }}><Icon type="ellipsis" />分类</li> */}
                     <li className={pathname === '/search' ? "active" : ""} onClick={() => { this.toUrl('/search') }}><Icon type="search" />发现</li>
                     <li className={pathname === '/my' ? "active" : ""} onClick={() => { this.toUrl('/my') }}><Icon type="ellipsis" />我的</li>
                 </ul>

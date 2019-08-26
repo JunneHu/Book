@@ -15,12 +15,12 @@ class My extends React.Component {
             userInfo
         }
     }
-    toLogin=()=>{
-        this.props.history.push(`/login?uri=${encodeURI(window.location.href)}`)
-    }
     logOut = () => {
         localStorage.clear();
-       this.toLogin();
+        this.toUrl(`/login?uri=${encodeURI(window.location.href)}`)
+    }
+    toUrl = (url) => {
+        this.props.history.push(url)
     }
     render() {
         const { props } = this;
@@ -39,7 +39,7 @@ class My extends React.Component {
                                     <div className="name">{userInfo.userName || userInfo.mobileNo}<button className="btn gost" onClick={this.logOut}>退出登录</button></div>
                                     :
                                     <div className="btn-bg">
-                                        <button className="btn theme" onClick={this.toLogin}>登录</button>
+                                        <button className="btn theme" onClick={() => { this.toUrl(`/login?uri=${encodeURI(window.location.href)}`) }}>登录</button>
                                         <button className="btn gost">注册</button>
                                     </div>
                             }
@@ -48,6 +48,10 @@ class My extends React.Component {
                     <ul className="set-list">
                         <li>
                             <div className="left">我的订单</div>
+                            <div className="right"><Icon type="right" /></div>
+                        </li>
+                        <li onClick={() => { this.toUrl('/mybook') }}>
+                            <div className="left">我的书架</div>
                             <div className="right"><Icon type="right" /></div>
                         </li>
                     </ul>
